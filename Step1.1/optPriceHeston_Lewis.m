@@ -1,5 +1,3 @@
-%varsigma = 0.1;kappa = 1;delta = 0.2;v0 = 0.04;rho = -0.75;
-%OptPriceHeston_Lewis(100, 100, 0.05, 1, delta, rho, kappa, varsigma, v0)
 function [price] = optPriceHeston_Lewis(K, S, r, tau, delta, rho, kappa, varsigma, v0)
     %
     % delta     volatility of volatility
@@ -24,13 +22,11 @@ function [price] = optPriceHeston_Lewis(K, S, r, tau, delta, rho, kappa, varsigm
     end
     %
     cf2 = @(u) CF(u, 2, S, r, tau, delta, rho, kappa, varsigma, v0);
-    %i = @(u)  (log(S/K))^(-1i*u) * cf2(u - 1i/2) / (u^2 + 0.25) ;
     i = @(u)  K^(-1i*u) * cf2(u - 1i/2) / (u^2 + 0.25) ;
     ii = @(u) real(i(u));
     
     tt =  integral(@(u) ii(u), 0, inf, 'ArrayValued', true);
     %
-    %price = S - sqrt(S*K)*exp(-r * tau/2) / pi * tt;
     price = S - sqrt(K)*exp(-r * tau) / pi * tt;
     %
 end
