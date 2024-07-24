@@ -21,3 +21,26 @@ Generate the synthetic dataset that will be used to train the neural network:
 
 **Inputs:**
 
+Heston model parameters:
+
+1. delta - volatility of volatility
+
+2. rho - correlation
+
+3. kappa - mean reversion speed
+  
+4. varsigma - long-term variance
+
+5. v0 - initial variance 
+
+Option's properties:
+
+6. tau - time to maturity
+
+7. S - stock price
+
+8. K - strike price
+
+**Output:**
+
+p - option prices
