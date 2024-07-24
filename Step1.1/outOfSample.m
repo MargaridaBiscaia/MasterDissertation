@@ -69,7 +69,7 @@ for i=1:Np
 end
 hold off;
 %
-%% Replicate the parameters (n+1) times (goal: parameters organized per observation) and associate the stock prices to each line
+%% Replicate the parameters (n+1) times (goal: parameters organized per week) and associate the stock prices to each line
 dataset1 = [repmat(parameters, n+1, 1), reshape(matrizStock.', [], 1)];
 %
 %% Generate derivatives properties (Maturity time T and Strike prices)
