@@ -7,3 +7,10 @@ To address these challenges, neural networks have emerged as a promising approac
 We present a novel implementation and comparative analysis of the performance of two types of neural networks, Feedforward Neural Networks (FNN) and Long Short-Term Memory Networks (LSTM), in solving the Heston model calibration problem. We employ a two-step calibration approach, using neural networks to approximate the pricing function and significantly reduce calibration time. Our numerical experiments demonstrate that LSTM networks, particularly when combined with a variant of the Differential Evolution algorithm, can improve calibration accuracy compared to FNNs.
 
 **Keywords:** Neural Networks, Option pricing models, Model's calibration, Population-based optimization methods.
+
+**Method:**
+
+We adopt the two-step NN-approach proposed by \cite{Horvath} and \cite{ Horvath2}, applying it for the calibration of the Heston model. 
+The proposed NN-based framework consists on first learning a model and then calibrate it to the data. In the first step, named forward pass, 
+a neural network is trained with synthetic data to approximate the pricing function of a model. 
+In the second step, named backward pass, the trained network is used in the calibration process instead of the traditional numerical option pricing methods. 
