@@ -2,7 +2,7 @@
 Np = 1; % number of sets of parameters
 D = 5; % number of parameters
 %
-n = 52; % number of observations (1 observation per day in a year)
+n = 52; % number of observations (1 observation per week in a year)
 r = 0.05; % risk-free interest rate
 S0 = 189; % initial stock price (thinking of apple)
 %
@@ -34,7 +34,7 @@ for i=1:Np
 end
 hold off;
 %
-%% Replicate the parameters (n+1) times (goal: parameters organized per day) and associate the stock prices to each line
+%% Replicate the parameters (n+1) times (goal: parameters organized per week) and associate the stock prices to each line
 dataset1 = [repmat(parameters, n+1, 1), reshape(matrizStock.', [], 1)];
 %
 %% Generate derivatives properties (Maturity time T and Strike prices)
@@ -64,12 +64,9 @@ end
 dataset3 = array2table(dataset3);
 dataset3.Properties.VariableNames = {'varsigma', 'kappa', 'delta', 'v0', 'rho', 'Stock Price', 'Maturity Time', 'Strike', 'tau'};
 %
-paraAqui
 %% Calculate the prices
 ntotal = Nop*Np*(n+1);
 Price = zeros(ntotal, 1);
-date = 0;
-Maturity = floor(dataset3.tau*365+1);
 %%
 %
 h = waitbar(0,'Please wait ...');
@@ -77,16 +74,12 @@ niter = ntotal;
 iter = 0;
 
 for i = 1:ntotal
-    pricec = optByHestonNI(r, dataset3.('Stock Price')(i), date, Maturity(i), 'call', dataset3.Strike(i), dataset3.v0(i), dataset3.varsigma(i), dataset3.kappa(i), dataset3.delta(i), dataset3.rho(i), 'DividendYield', 0, 'Framework', 'lewis2001');
     iter = iter + 1;
     waitbar(iter/niter,h,'Please wait ...')
-    %pricec = optPriceHeston_Lewis(dataset3.Strike(i), dataset3.('Stock Price')(i), r, dataset3.tau(i), dataset3.delta(i), dataset3.rho(i), dataset3.kappa(i), dataset3.varsigma(i), dataset3.v0(i));
+    pricec = optPriceHeston_Lewis(dataset3.Strike(i), dataset3.('Stock Price')(i), r, dataset3.tau(i), dataset3.delta(i), dataset3.rho(i), dataset3.kappa(i), dataset3.varsigma(i), dataset3.v0(i));
     Price(i) = pricec;
 end 
 close(h)
-%
-j=i;
-save('Price.mat', 'Price', 'j');
 %
 % Calculate moneyness and obtain the final dataset
 moneyness = dataset3.('Stock Price') ./ dataset3.Strike;
@@ -96,6 +89,3 @@ dataset = [dataset3(:, {'varsigma', 'kappa', 'delta', 'v0', 'rho', 'tau', 'Stock
 dataset = round(table2array(dataset),4);
 dataset = array2table(dataset);
 dataset.Properties.VariableNames = {'varsigma', 'kappa', 'delta', 'v0', 'rho', 'tau', 'stockPrice', 'strike', 'moneyness', 'price'};
-%
-writetable(dataset,"C:\Users\User\OneDrive - Universidade de Coimbra\Ambiente de Trabalho\Thesis\Code\Apple\calibrateApple.csv")
-writetable(dataset3,"C:\Users\User\OneDrive - Universidade de Coimbra\Ambiente de Trabalho\Thesis\Code\Apple\featuresCalibrateApple.csv")
