@@ -8,9 +8,11 @@ We present a novel implementation and comparative analysis of the performance of
 
 **Keywords:** Neural Networks, Option pricing models, Model's calibration, Population-based optimization methods.
 
-**Method:**
+## **Method:**
 
-We adopt the two-step NN-approach proposed by \cite{Horvath} and \cite{ Horvath2}, applying it for the calibration of the Heston model. 
-The proposed NN-based framework consists on first learning a model and then calibrate it to the data. In the first step, named forward pass, 
+We adopt the two-step NN-approach, applying it for the calibration of the Heston model. 
+The proposed NN-based framework consists on first learning a model and then calibrate it to the data. In the first step, 
 a neural network is trained with synthetic data to approximate the pricing function of a model. 
-In the second step, named backward pass, the trained network is used in the calibration process instead of the traditional numerical option pricing methods. 
+In the second step, the trained network is used in the calibration process instead of the traditional numerical option pricing methods. 
+
+**Step**
