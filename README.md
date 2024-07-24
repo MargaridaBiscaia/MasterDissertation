@@ -15,4 +15,9 @@ The proposed NN-based framework consists on first learning a model and then cali
 a neural network is trained with synthetic data to approximate the pricing function of a model. 
 In the second step, the trained network is used in the calibration process instead of the traditional numerical option pricing methods. 
 
-**Step**
+### **Step 1.1**
+
+Generate the synthetic dataset that will be used to train the neural network:
+
+**Inputs:**
+
