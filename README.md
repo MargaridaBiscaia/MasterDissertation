@@ -15,32 +15,16 @@ The proposed NN-based framework consists on first learning a model and then cali
 a neural network is trained with synthetic data to approximate the pricing function of a model. 
 In the second step, the trained network is used in the calibration process instead of the traditional numerical option pricing methods. 
 
+The repository is organized as follows: 
+
 ### **Step 1.1**
 
-Generate the synthetic dataset that will be used to train the neural network:
+Generate the synthetic dataset that will be used to train the neural network. This same method is used to generate the out-of-sample dataset and the synthetic calibration dataset.
 
-**Inputs:**
+### **Step 1.2**
 
-Heston model parameters:
+Train the FNN and LSTM networks.
 
-1. delta - volatility of volatility
+### **Step 2**
 
-2. rho - correlation
-
-3. kappa - mean reversion speed
-  
-4. varsigma - long-term variance
-
-5. v0 - initial variance 
-
-Option's properties:
-
-6. tau - time to maturity
-
-7. S - stock price
-
-8. K - strike price
-
-**Output:**
-
-p - option prices
+Calibrate the Heston option pricing model comparing the perfomances of the FNN and LSTM networks, and the ms Differential Evolution and Particle Swarm Optimization algorithms.
