@@ -28,3 +28,7 @@ Train the FNN and LSTM networks.
 ### **Step 2**
 
 Calibrate the Heston option pricing model comparing the perfomances of the FNN and LSTM networks, and the ms Differential Evolution and Particle Swarm Optimization algorithms.
+
+### **Data**
+
+Generated datasets for training, out of sample evaluation and synthetic calibration.
