@@ -1,6 +1,6 @@
 # Calibrating Option Pricing Models using Neural Networks and Population-Based Optimization Methods
 
--> Report available at https://estudogeral.uc.pt/handle/10316/116304 
+**Report available at** https://estudogeral.uc.pt/handle/10316/116304 
 
 **Abstract:**
 
