@@ -1,5 +1,7 @@
 # Calibrating Option Pricing Models using Neural Networks and Population-Based Optimization Methods
 
+-> Report available at https://estudogeral.uc.pt/handle/10316/116304 
+
 **Abstract:**
 
 In finance, model calibration is a crucial task that ensures that option pricing models accurately reflect market conditions, reducing the risk of decisions based on unreliable information. However, this calibration process is often computationally intensive and time-consuming, especially when dealing with complex models.
